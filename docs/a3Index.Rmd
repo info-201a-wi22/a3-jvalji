@@ -1,0 +1,53 @@
+---
+title: "Latinx and White Incarcerations in the U.S."
+author: "Jaya Valji"
+date: "2/25/2022"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r source, include = FALSE, echo = FALSE}
+```
+library("maps")
+library("usmap")
+library("ggplot2")
+library("tidyverse")
+library("mapdata")
+library("dplyr")
+source("../source/a3analysis.R")
+```
+## Introduction 
+Using the incarceration_trends csv file, this report specifically compares the population of latinx vs.  white people in jail. Examining the latinx community was of particular interest due to the current US-Mexico border crisis. Though the maximum year the data represents is 2013, the US saw rapidly increasing rates of latinx immigration beginning in the early 2000s that continued to rise. The project is therefore contextualised within a linkage between immigration, prejudice/racism, and subsequent incarceration of the latinx population. The first two charts only focus on the state of California whereas the 2 maps are of the nation as a whole. California is studied because it is the state with the most latinx cultural influence and latinx population.
+***
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r, include = TRUE, echo = FALSE}
+plot(chart1)
+```
+## Chart 1: Total CA Latinx vs. White Incarcerations from 2000-2013
+This smooth-line chart clearly represents how the number of people jailed between white and latinx communities have changed within just over a decade. The latinx jail values very steadily increase without any significant waver. Arguably, the rate slightly accelerates between 2009-2013 and onward, which is the nearly the exact timeframe of increased latinx immigration. The white jail values stedily decline, then at the same time as latinx become steeper, the white values take a large dip then increase dramatically.
+You can also embed plots, for example:
+```{r, include = TRUE, echo = FALSE}
+plot(pie_chart2)
+```
+## Chart 2: Relationship of Latinx and White Jail Populations
+This pie chart portrays the total number of latinx people jailed out of the total number of people jailed in 2013. Visually representing the data through a pie chart gives the viewer an idea of the proportion between the two groups. Once can see that the latinx community takes over a larger portion of the pie, showing how they get jailed significanty more (even though the majority of people in California are still white!).
+
+```{r, include = TRUE, echo = FALSE}
+plot(map_1)
+```
+## Map 1: U.S. Map of Latinx Jail Population, 2006
+This map shows how states vary in the number of latinx people they hold in jails. As shown in 2006, many states do not even have records of this according to the incarceration csv file, however those that do, have very low incarceration levels. The year 2006 was chosen to study because it is a few years before the beginning of a rapid increase in latinx immigration to the U.S.
+```{r, include = TRUE, echo = FALSE, warning = FALSE, message = F}
+plot(map_2)
+```
+## Map2: U.S. Map of Latinx Jail Population, 2013
+This map can be compared to that of Map 1, with the difference being that the data is from 2013. In just under a decade, one can see how there is significantly more states that have incarcerated latinx people. Incarceration steadily grows from 2006-2013 as immigration rates increase with prejudice and hate against the population as well.
+
+##Summary of Data
+In general, the data shows higher incarcerations rates of latinx populations than white between 2000 and 2013. It can only be assumed that this is due to the increasing rates of latinx immigration to the US between those years, and may have some correlation with rising prejudice against them as well. It is interesting to see how states that are known for having the largest latinx populations and cultural influence such as Texas, California, and Arizona have had the largest increases in latinx incarceration over the years. In 2006, Texas was close to 0.0 incarceration of latinx people, and by 2013, they stood closer to 0.70. As for California, they were around 0.20 in 2006 and increased to around 0.40 by 2013. Looking at Chart 1, we can see that a high of 20627 latinx people were incarcerated in California whereas the high for white incarcerations was 16158 people in 2007. While both white and latinx incarcerations peaked around 2006-2009, the white incarcerations were significantly still lower than latinx.
+
