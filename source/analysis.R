@@ -1,11 +1,6 @@
-install.packages("maps")
-library(tidyverse)
-library("dplyr")
-library(ggplot2)
-library(maps)
 
 og_incarceration_file <- read.csv("../source/incarceration_trends.csv", header = T)
-View(og_incarceration_file)
+
 
 #Consolidate original messy data (this step mostly makes this easier to view, but is technically unnecessary)
 my_incarceration_file <- og_incarceration_file %>%
@@ -17,7 +12,7 @@ my_incarceration_file <- og_incarceration_file %>%
          total_jail_pop,
          latinx_jail_pop,
          white_jail_pop)
-View(my_incarceration_file)
+
 
 #Extract specific data needed and create new table
 CA_incarceration_file <- my_incarceration_file %>% group_by(year) %>% filter(state == "CA") %>% 
@@ -25,11 +20,10 @@ CA_incarceration_file <- my_incarceration_file %>% group_by(year) %>% filter(sta
   gather(key = race, value = population, -year, na.rm = TRUE) %>%
   group_by(year, race) %>%
   summarise(population = sum(population))
-View(CA_incarceration_file)
+
 
 CA_incarceration_file$race <- CA_incarceration_file$race %>% 
   factor(levels = c("latinx_jail_pop", "white_jail_pop"))
-View(CA_incarceration_file)
 
 #Charts
 #Chart 1: Comparing latinx vs white jail incarcerations in CA overtime.
@@ -45,12 +39,12 @@ chart1
 #Chart 2: Showing the relationship between latinx jail populations to white jail populations from the total jail incarcerations in CA in 2013.
 
         
-library(ggplot2)
+
 CA_total_incars <- my_incarceration_file %>%
   filter(year == "2013") %>%
   filter(state == "CA") %>% 
   summarise(latinx_jail_pop = sum(latinx_jail_pop), total_jail_pop = sum(total_jail_pop))
-View(CA_total_incars)
+
 
 #Pie Chart code
 pie_chart2<- ggplot(CA_total_incars, aes(x = "", y = "latinx_jail_pop", fill = "latinx incarceration"))+
@@ -61,13 +55,6 @@ pie_chart2<- ggplot(CA_total_incars, aes(x = "", y = "latinx_jail_pop", fill = "
 pie_chart2
 
 #Map: Comparing latinx incarceration rates to white incarceration rates nationwide  
-install.packages("usmap")
-library("usmap")
-library("ggplot2")
-library("maps")
-library("tidyverse")
-install.packages("mapdata")
-library("mapdata")
 
 #Create 2 tables for the map with a column showing the ratio of latinx jail populations to total jail populations for each state of the country.
 
@@ -75,13 +62,12 @@ library("mapdata")
 map_table_2006 <- my_incarceration_file %>% group_by(state) %>% filter(year == "2006") %>% 
   select(year, latinx_jail_pop, total_jail_pop) %>%
   mutate(ratio_latinx_incar = (latinx_jail_pop/total_jail_pop))
-View(map_table_2006)
 
 ##Year 2013 map table:
 map_table_2013 <- my_incarceration_file %>% group_by(state) %>% filter(year == "2013") %>% 
   select(year, latinx_jail_pop, total_jail_pop) %>%
   mutate(ratio_latinx_incar = (latinx_jail_pop/total_jail_pop))
-View(map_table_2013)
+
 
 #Create a map from each table (showing the ratio of national latinx jail populations to total jail populations in that year).
 #Blank Theme

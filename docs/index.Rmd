@@ -8,22 +8,18 @@ output: html_document
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 ```{r source, include = FALSE, echo = FALSE}
-```
 library("maps")
 library("usmap")
 library("ggplot2")
 library("tidyverse")
 library("mapdata")
 library("dplyr")
-source("../source/a3analysis.R")
+source("../source/analysis.R")
 ```
 ## Introduction 
 Using the incarceration_trends csv file, this report specifically compares the population of latinx vs.  white people in jail. Examining the latinx community was of particular interest due to the current US-Mexico border crisis. Though the maximum year the data represents is 2013, the US saw rapidly increasing rates of latinx immigration beginning in the early 2000s that continued to rise. The project is therefore contextualised within a linkage between immigration, prejudice/racism, and subsequent incarceration of the latinx population. The first two charts only focus on the state of California whereas the 2 maps are of the nation as a whole. California is studied because it is the state with the most latinx cultural influence and latinx population.
-***
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r, include = TRUE, echo = FALSE}
 plot(chart1)

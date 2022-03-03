@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/873054/6411adbb0765430a9f96206454daa3b9
+bundleId: https://api.rpubs.com/api/v1/document/873054/6411adbb0765430a9f96206454daa3b9
+url: http://rpubs.com/jjvalji/873054/edit
+when: 1646268301.1897
+lastSyncTime: 1646268301.1897
